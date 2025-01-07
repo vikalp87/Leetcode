@@ -7,18 +7,13 @@ public:
    {
        m[s[i]]++;
    }
-
-   for(int i=0;i<t.size();i++)
+     for(int i=0;i<t.size();i++)
    {
       if(m[t[i]]>0)
       {
        m[t[i]]--;
       }
-       if(m[t[i]==0])
-       {
-        m.erase(t[i]);
-       }
-
+      
    }
 
    for(auto i:m)
