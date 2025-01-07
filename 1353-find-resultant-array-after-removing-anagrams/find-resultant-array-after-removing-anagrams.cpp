@@ -15,6 +15,7 @@ public:
            {
             //stored in final ans
                 m[str]=i;
+                
               ans.push_back(words[i]);
 
            }
