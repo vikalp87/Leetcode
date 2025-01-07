@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minSteps(string s, string t) {
-   unordered_map<int,int>m;
+   unordered_map<char,int>m;
    int count=0;
    for(int i=0;i<s.size();i++)
    {
@@ -13,13 +13,15 @@ public:
       {
        m[t[i]]--;
       }
+      else
+      {
+        count++;
+      }
+
       
    }
 
-   for(auto i:m)
-   {
-     count+=i.second;
-   }
+  
 return count;
 
     }
