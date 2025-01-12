@@ -1,22 +1,21 @@
 class Solution {
 public:
     int numberOfSubstrings(string s, int k) {
-        int i=0,j=0;
-        vector<int>ans(26,0);
-        int finalAns=0;
-        while(j<s.size())
+        int left=0,right=0;
+        vector<int>freq(26,0);
+        int ans=0;
+        while(right<s.size())
         {
-            ans[s[j]-'a']++;
-             while(ans[s[j]-'a']>=k)
+            freq[s[right]-'a']++;
+             while(freq[s[right]-'a']>=k)
              {
-                finalAns+=(s.size()-j);
-                ans[s[i]-'a']--;
-                i++;
+                ans+=(s.size()-right);
+                freq[s[left]-'a']--;
+                   left++;;
 
              }
-           j++;
+           right++;
         }
-        return finalAns;
-       
+        return ans;       
     }
 };
