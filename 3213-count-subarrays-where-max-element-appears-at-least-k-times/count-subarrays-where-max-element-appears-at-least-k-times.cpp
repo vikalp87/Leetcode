@@ -11,12 +11,17 @@ public:
         } 
         while(j<nums.size())
         {
-            m[nums[j]]++;
+            if(nums[j]==maxi){
+                m[nums[j]]++;
+            }
 
            while(m[maxi]>=k)
            {
-            ans+=(nums.size()-j);
-            m[nums[i]]--;
+
+             ans+=(nums.size()-j);
+            if(nums[i]==maxi){
+               m[nums[i]]--;
+            }
               i++;
            }
 
