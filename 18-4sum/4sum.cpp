@@ -12,9 +12,9 @@ public:
                   set<long long>m;
                 for(int k=j+1;k<nums.size();k++)
                 {
-                  long long sum = nums[i] + nums[j];
-                sum += nums[k];
-                long long fourthNo = target - sum;
+                  long long fourthNo=target-nums[i];
+                  fourthNo-=nums[j];
+                  fourthNo-=nums[k];
 
                    if(m.find(fourthNo)!=m.end())
                    {
