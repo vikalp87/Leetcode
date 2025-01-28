@@ -42,15 +42,7 @@ while(fast!=NULL&&fast->next!=NULL)
     slow=head;
     if(fast==slow)
     return slow;
-    break;
-
-   }
-
-}
-
-
-
-while(fast!=NULL&&fast->next!=NULL)
+    while(slow!=fast)
 {
     slow=slow->next;
     fast=fast->next;
@@ -59,6 +51,14 @@ while(fast!=NULL&&fast->next!=NULL)
         return slow;
     }
 }
+
+   }
+
+}
+
+
+
+
 
 return NULL;
    
