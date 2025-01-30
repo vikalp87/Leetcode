@@ -63,11 +63,11 @@ while(j>=0)
 
     p--;
 }
-while(i>=0)
-{
-    swap(nums1[p],nums1[i]);
-    i--,p--;
-}
+// while(i>=0)
+// {
+//     swap(nums1[p],nums1[i]);
+//     i--,p--;
+// }
 
     }
 };
