@@ -35,8 +35,7 @@ while(i<n)
              }
              if(i<n)
              {
-                nums[j]=nums[i];
-                i++,j++;
+                nums[j++]=nums[i++];
                 count++;
              }
              b=true;
@@ -44,18 +43,12 @@ while(i<n)
      }
      else
      {
-        if(!b)
-        {
-            count++;
-            i++,j++;
-            
-        }
-        else
-        {
-            nums[j]=nums[i];
-            i++,j++;
-            count++;
-        }
+        if(b){
+        nums[j]=nums[i];
+         }
+        
+        count++;
+        i++;j++;
      }  
 
 }
