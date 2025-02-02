@@ -21,40 +21,50 @@ public:
  
 
     //  return s.size();
-int i=0,j=0;
-int n=nums.size();
-bool b=false;
-int count=0;
-while(i<n)
-{
-    if(i-1>=0&&nums[i-1]==nums[i])
-     {
-             while(i<n&&nums[i]==nums[i-1])
-             {
-                i++;
-             }
-             if(i<n)
-             {
-                nums[j++]=nums[i++];
-                count++;
-             }
-             b=true;
+// int i=0,j=0;
+// int n=nums.size();
+// bool b=false;
+// int count=0;
+// while(i<n)
+// {
+//     if(i-1>=0&&nums[i-1]==nums[i])
+//      {
+//              while(i<n&&nums[i]==nums[i-1])
+//              {
+//                 i++;
+//              }
+//              if(i<n)
+//              {
+//                 nums[j++]=nums[i++];
+//                 count++;
+//              }
+//              b=true;
 
-     }
-     else
-     {
-        if(b){
-        nums[j]=nums[i];
-         }
+//      }
+//      else
+//      {
+//         if(b){
+//         nums[j]=nums[i];
+//          }
         
-        count++;
-        i++;j++;
-     }  
+//         count++;
+//         i++;j++;
+//      }  
 
-}
+// }
      
-     return count;
+//      return count;
 
+int i=1;
+int n=nums.size();
+       for(int j=1;j<n;j++)
+       {
+            if(nums[j]!=nums[j-1])
+            {
+                nums[i++]=nums[j];
+            }
+       }
 
+       return i;
     }
 };
