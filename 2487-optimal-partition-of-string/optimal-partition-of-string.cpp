@@ -8,10 +8,8 @@ public:
             ans[s[i]-'a']++;
             if(ans[s[i]-'a']>1)
             {
-                cout<<i<<endl;
                partitions++;
-               for(int j=0;j<26;j++)
-               {
+               for(int j=0;j<26;j++){
                   ans[j]=0;
                }
                ans[s[i]-'a']++;
