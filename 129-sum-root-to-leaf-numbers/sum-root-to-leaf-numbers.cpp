@@ -20,9 +20,7 @@ public:
          stageSum =stageSum * 10 + root->val;
         if (root->left == NULL && root->right == NULL) {
             totalSum += stageSum;
-            stageSum =((stageSum - root->val) / 10);
-            return;
-        }
+         }
         sum(root->left, totalSum, stageSum);
         sum(root->right, totalSum, stageSum);
         stageSum =((stageSum - root->val) / 10);
