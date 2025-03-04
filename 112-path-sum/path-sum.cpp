@@ -15,17 +15,12 @@ public:
     bool pathSum(TreeNode* root, int targetSum, int& sum) {
 
         if (root == NULL) {
-            return false;;
+            return false;
         }
         sum += root->val;
-        if (root->left == NULL && root->right == NULL) {
-            if (sum == targetSum) {
-                sum = sum - root->val;
-                return true;
-            } else {
-                sum = sum - root->val;
-                return false;
-            }
+        if (root->left == NULL && root->right == NULL&&sum==targetSum) {
+            sum=sum-root->val;
+            return true;
         }
         bool a = pathSum(root->left, targetSum, sum);
         bool b = pathSum(root->right, targetSum, sum);
