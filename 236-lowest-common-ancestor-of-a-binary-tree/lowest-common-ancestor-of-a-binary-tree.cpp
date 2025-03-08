@@ -26,19 +26,33 @@ public:
             return lh||rh;
    }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        vector<TreeNode *>vec1;
-        vector<TreeNode *>vec2;
-        TreeNode *result=NULL;
-        lowestCommon(root,p,vec1);
-        lowestCommon(root,q,vec2);
+    //     vector<TreeNode *>vec1;
+    //     vector<TreeNode *>vec2;
+    //     TreeNode *result=NULL;
+    //     lowestCommon(root,p,vec1);
+    //     lowestCommon(root,q,vec2);
        
-        int minsize= min(vec1.size(),vec2.size());
-        for(int i=0;i<minsize;i++){
-            if(vec1[i]->val!=vec2[i]->val){
-                break;
-            }
-            result=vec1[i];
-        }
-      return result;
+    //     int minsize= min(vec1.size(),vec2.size());
+    //     for(int i=0;i<minsize;i++){
+    //         if(vec1[i]->val!=vec2[i]->val){
+    //             break;
+    //         }
+    //         result=vec1[i];
+    //     }
+    //   return result;
+         if(!root||root==p||root==q){
+            return root;
+         }
+        TreeNode *left= lowestCommonAncestor(root->left,p,q);
+         TreeNode *right=lowestCommonAncestor(root->right,p,q);
+           if(left==NULL){
+            return right;
+           }
+           else if(right==NULL){
+              return left;
+           }
+           return root;
+         
+
     }
 };
