@@ -31,34 +31,14 @@ public:
         TreeNode *result=NULL;
         lowestCommon(root,p,vec1);
         lowestCommon(root,q,vec2);
-        int size1=vec1.size();
-        int size2=vec2.size();
-      
-
-      if(size1>=size2){
-          for(int i=0;i<vec2.size();i++)
-        {
-           
-            if(vec2[i]->val!=vec1[i]->val){
-               break;
-            }
-             result=vec2[i];
-        }
-
-        }
-        else{
-             for(int i=0;i<vec1.size();i++)
-        {
-            
-            if(vec2[i]->val!=vec1[i]->val){
-               break;
+       
+        int minsize= min(vec1.size(),vec2.size());
+        for(int i=0;i<minsize;i++){
+            if(vec1[i]->val!=vec2[i]->val){
+                break;
             }
             result=vec1[i];
         }
-        }
-
-      
-       
-        return result;
+      return result;
     }
 };
