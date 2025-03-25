@@ -12,7 +12,7 @@
  */
 class Solution {
 public:
-    TreeNode * constructTree(int l, int r, bool leftCall, bool rightCall, TreeNode* prev,vector<int>nums) {
+    TreeNode * constructTree(int l, int r,vector<int>nums) {
 
         if (l > r)
             return NULL;
@@ -20,15 +20,8 @@ public:
         pair<int, int> p = maximumValue(nums,l,r);
         TreeNode* root = new TreeNode(p.first);
         
-         if (prev != NULL) {
-            if (leftCall) {
-                prev->left = root;
-            } else {
-                prev->right = root;
-            }
-        }
-        constructTree(l, p.second - 1, true, false,root,nums);
-        constructTree(p.second + 1, r, false, true,root,nums);
+        root->left=constructTree(l, p.second - 1,nums);
+       root->right= constructTree(p.second + 1, r,nums);
         return root;
     }
 
@@ -51,7 +44,7 @@ public:
     TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
 
         int l = 0, r = nums.size() - 1;
-       return constructTree(l, r, false, false, NULL,nums);
+       return constructTree(l, r,nums);
 
     }
 };
