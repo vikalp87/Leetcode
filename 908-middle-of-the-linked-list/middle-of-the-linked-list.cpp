@@ -11,18 +11,30 @@
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-     ListNode *temp=head;
-     int count=0;
-     while(temp!=NULL){
-        temp=temp->next;
-        count++;
-     }
+     ListNode *fast=head;
+     ListNode *slow=head;
+    //  int count=0;
+    //  while(temp!=NULL){
+    //     temp=temp->next;
+    //     count++;
+    //  }
 
-     int middleElement=(count/2);
-     temp=head;
-     while(middleElement--){
-       temp=temp->next;
+    //  int middleElement=(count/2);
+    //  temp=head;
+    //  while(middleElement--){
+    //    temp=temp->next;
+    // }
+    // return temp;
+    // }
+
+    while(fast!=NULL && fast->next!=NULL ){
+
+        fast=fast->next->next;
+        slow=slow->next;
     }
-    return temp;
+    return slow;
+
     }
+
+
 };
