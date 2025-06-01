@@ -11,51 +11,36 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-
-    //  ListNode *temp=head;
-    //  int length=0;
-    //  while(temp!=NULL)
-    //  {
-    //     length++;
-       
-    //     temp=temp->next;
-    // }
-    // int index=length-n+1;
-    // ListNode *node=head;
-    // ListNode *prev=NULL;
-    // bool b=false;
-    // while(index-1)
-    // {
-    //     prev=node;
-    //     node=node->next;
-    //     index--;
-    //     b=true;
-    // }
-    // if(!b){
-    //  head=node->next;
-    // }
-    // else
-    // {
-    //  prev->next=node->next;
-    // }
-    
-    //  return head;
-
     ListNode *fast=head;
     ListNode *slow=head;
-    for(int i=0;i<n;i++)
-    {
+    for(int i=0;i<n;i++){
+        if(fast!=NULL)
         fast=fast->next;
     }
-    if(fast==NULL)
-    return head->next;
 
-    while(fast!=NULL&&fast->next!=NULL)
-    {
-          fast=fast->next;
-          slow=slow->next;
+/* if the below condtion is true means fast reaches the end node and slow reaches the node to be deleted
+ but if this condition is false it means fast is already viloating means slow is always present on first position so we have to delete that node and update head also
+
+*/
+
+    while(fast!=NULL && fast->next!=NULL){
+        fast=fast->next;
+        slow=slow->next;
+      
     }
-   slow->next=slow->next->next;
+    
+    // means first node is deleted so we have to update head;
+    if(fast==NULL){
+        head=slow->next;
+    }
+    else{
+ slow->next=slow->next->next;
+    }
+  
+   
+   
     return head;
+     
     }
+    
 };
