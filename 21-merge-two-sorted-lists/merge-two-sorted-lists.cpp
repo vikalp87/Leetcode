@@ -17,74 +17,32 @@ public:
         ListNode* list2current = list2;
         ListNode* head = NULL;
 
-        if (list1 == NULL && list2 == NULL) {
-            return list1;
-        }
-        if (list1 == NULL && list2 != NULL) {
-            return list2;
-        }
-        if (list2 == NULL && list1 != NULL) {
-            return list1;
-        }
+      if(!list1)return list2;
+      if(!list2)return list1;
 
-        while (list1current != NULL && list2current != NULL) {
+      ListNode *dummy=new ListNode(-1);
+      ListNode*temp=dummy;
+        while (list1 != NULL && list2 != NULL) {
 
-            if (list1current->val > list2current->val) {
 
-                if (linkNode != NULL) {
-                    linkNode->next = list2current;
-                } else {
-                    head = list2current;
-                }
+          if(list1->val<=list2->val){
 
-                linkNode = list2current;
-                list2current = list2current->next;
-
-            } else if (list1current->val < list2current->val) {
-
-                if (linkNode != NULL) {
-                    linkNode->next = list1current;
-                } else {
-                    head = list1current;
-                }
-                linkNode = list1current;
-                list1current = list1current->next;
-            
-
-            } 
-            
-            else {
-                if (linkNode != NULL) {
-                    linkNode->next = list1current;
-                } else {
-                    head = list1current;
-                }
-
-                linkNode = list1current;
-               list1current = list1current->next;
-                linkNode->next = list2current;
-                linkNode = list2current;
-
+            temp->next=list1;
+            list1=list1->next;
                
-                list2current = list2current->next;
-            }
+          }
+          else if(list1->val>list2->val){
+             temp->next=list2;
+             list2=list2->next;
+
+          }
+         
+             temp=temp->next;
+           
         }
-
-        while (list1current != NULL) {
-
-            linkNode->next = list1current;
-            linkNode = list1current;
-            list1current = list1current->next;
-        }
-
-        while (list2current != NULL) {
-
-            linkNode->next = list2current;
-            linkNode = list2current;
-            list2current = list2current->next;
-        }
-
-        linkNode->next = NULL;
-        return head;
+        
+        temp->next=list1!=NULL?list1 :list2;
+       return dummy->next;
+      
     }
 };
