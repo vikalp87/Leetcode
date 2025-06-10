@@ -41,6 +41,8 @@ public:
 
    }
     ListNode* mergeKLists(vector<ListNode*>& lists) {
+        // its vector and its contain the head of linked list;
+        
         if(lists.empty()){
             return NULL;
         }
