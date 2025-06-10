@@ -10,53 +10,30 @@
  */
 class Solution {
 public:
-   
-   ListNode *mergeTwoLinkkedList(ListNode *headA,ListNode *headB){
-            
-            if(!headA){
-                return headB;
-            }
-            if(!headB){
-                return headA;
-            }
-      
-         ListNode *dummy=new ListNode(-1);
-         ListNode *temp=dummy;
-
-         while(headA!=NULL && headB!=NULL){
-
-            if(headA->val<=headB->val){
-                temp->next=headA;
-                headA=headA->next;
-            }
-            else{    
-                temp->next=headB;
-                headB=headB->next;
-            }
-            temp=temp->next;
-
-         }
-         temp->next=(headA==NULL? headB:headA);
-         return dummy->next;
-
-   }
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        // its vector and its contain the head of linked list;
-        
+     priority_queue<pair<int, ListNode*>, vector<pair<int, ListNode*>>, greater<pair<int, ListNode*>>> minHeap;
+
         if(lists.empty()){
             return NULL;
         }
+        
+        ListNode* dummy = new ListNode(-1);
+        ListNode* temp = dummy;
 
-      ListNode *first=NULL;
-      ListNode *second=NULL;
-      for(int i=0;i<lists.size();i++){
-     
-           first=lists[i];
-           second= mergeTwoLinkkedList(first,second);
+        for (int i = 0; i < lists.size(); i++) {
+            if(lists[i]!=NULL)
+            minHeap.push({lists[i]->val, lists[i]});
+        }
 
-       } 
-       
-        return second;
+        while (!minHeap.empty()) {
 
+            auto [value, address] = minHeap.top();
+            minHeap.pop();
+            temp->next = address;
+            temp = temp->next;
+            if(address->next!=NULL)
+            minHeap.push({address->next->val, address->next});
+        }
+        return dummy->next;
     }
 };
