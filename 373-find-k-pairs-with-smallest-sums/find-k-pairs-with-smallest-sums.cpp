@@ -10,10 +10,7 @@ public:
             return ans;
          }
 
-
-        
-      
-          for(int i=0;i<nums1.size();i++){
+          for(int i=0;i<nums1.size() && i<k;i++){
             minHeap.push({nums1[i]+nums2[0],{i,0}});
           }
 
