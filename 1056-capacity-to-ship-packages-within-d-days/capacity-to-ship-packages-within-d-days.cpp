@@ -18,8 +18,6 @@ public:
             totalDays++;
         }
 
-        cout<<mid<<" "<<totalDays<<endl;
-
         if (totalDays <= days)
             return true;
         return false;
