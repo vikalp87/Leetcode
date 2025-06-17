@@ -12,10 +12,10 @@ public:
 
             }
             // left part sorted
-            else if (mid - 1 >= low && nums[low] <=nums[mid - 1]) {
-                   cout<<low<<high<<mid<<endl;
-                if (target>=nums[low] && target<=nums[mid - 1]  ) {
-                    high = mid - 1;
+            else if (nums[low] <=nums[mid]) {
+                  
+                  if (target>=nums[low] && target<=nums[mid]) {
+                    high = mid;
                 } else {
                     low = mid + 1;
                 }
@@ -25,19 +25,18 @@ public:
             // right part sorted
             else {
 
-                if (mid + 1 < nums.size()) {
-                    if (target>=nums[mid + 1]  && target<=nums[high]) {
+                 if(mid+1<=high){
+                  if (target>=nums[mid + 1]  && target<=nums[high]) {
                       
                         low = mid + 1;
-                    } else {
-                          high = mid - 1;
+                    } else{
+                          high = mid;
                     }
-                }
-                else{
-                    high--;
-                }
+                
+                 }
             }
         }
-        return -1;
+       
+       return -1;
     }
 };
