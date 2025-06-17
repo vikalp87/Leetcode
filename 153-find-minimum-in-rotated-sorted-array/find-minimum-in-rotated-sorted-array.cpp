@@ -7,7 +7,7 @@ public:
 
         while (low <= high) {
             int mid = low + ((high - low) / 2);
-            cout<<mid<<endl;
+            
 
             // left part sorted so we get one minimum so fetch the minimum and
             // go toright part to find other sorted minimum
@@ -15,8 +15,10 @@ public:
                 ans = min(ans, nums[low]);
                 low = mid + 1;
             } else {
-                ans = min(ans, nums[mid]);
-                high = mid-1;
+                if(mid+1<=high){
+                ans = min(ans, nums[mid+1]);
+                high = mid;
+                }
             }
         }
         return ans;
