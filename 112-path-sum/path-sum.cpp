@@ -15,8 +15,9 @@ public:
           if(!root)return false;
           sum+=root->val;  
           if(root->left==NULL && root->right==NULL && sum==targetSum){
-              return true;
+            
               sum=sum-root->val;
+                return true;
           }
 
             bool isLeft=pathsum(root->left,targetSum,sum);
