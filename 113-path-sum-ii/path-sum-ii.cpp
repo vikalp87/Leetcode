@@ -12,23 +12,23 @@
  */
 class Solution {
 public:
-    bool pathsum(TreeNode* root, int targetSum,vector<int>ans,  vector<vector<int>>&result) {
+    void pathsum(TreeNode* root, int targetSum,vector<int>ans,  vector<vector<int>>&result) {
         if (!root)
-            return false;
+            return ;
         targetSum = targetSum - root->val;
         ans.push_back(root->val);
         if (root->left == NULL && root->right == NULL) {
            if(targetSum==0){
             result.push_back(ans);
-            return true;
+            return ;
             }
-            return false;
+            return ;
         }
 
-        bool isLeft = pathsum(root->left, targetSum,ans,result);
-        bool isRight = pathsum(root->right, targetSum,ans,result);
+         pathsum(root->left, targetSum,ans,result);
+         pathsum(root->right, targetSum,ans,result);
 
-        return isLeft || isRight;
+
     }
 
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
