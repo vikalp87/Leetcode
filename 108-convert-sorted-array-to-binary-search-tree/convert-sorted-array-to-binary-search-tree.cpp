@@ -21,12 +21,9 @@ public:
         // createNode
         TreeNode* newNode = new TreeNode(nums[mid]);
 
-        TreeNode *leftNodeAddress=helper(nums, low, mid - 1);
-        TreeNode *RightNodeAddress= helper(nums, mid + 1, high);
+        newNode->left = helper(nums, low, mid - 1);
+        newNode->right = helper(nums, mid + 1, high);
 
-         newNode->left=leftNodeAddress;
-         newNode->right= RightNodeAddress;
-        
         return newNode;
     }
 
