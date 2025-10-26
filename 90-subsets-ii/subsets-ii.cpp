@@ -1,33 +1,35 @@
 class Solution {
 public:
-   
-   void rec(vector<int>& nums,int index, vector<int>&current,vector<vector<int>>&ans, set<vector<int>>&set){
-       
-       if(index==nums.size()){
-         vector<int>p1(current);
-         sort(p1.begin(),p1.end());
+    
+    void rec(vector<int>&nums,int index,vector<int>&current, vector<vector<int>>&ans){
 
-        auto p=set.insert(p1);
-       if(p.second){
-        ans.push_back(current);
-       }
-          return ;
-       }
- 
-        current.push_back(nums[index]);
-        rec(nums,index+1,current,ans,set);
-        current.pop_back();
-        rec(nums,index+1,current,ans,set);
-}
+          ans.push_back(current);
+         if(index==nums.size()){
+            return;
+         }
+
+         for(int i=index;i<nums.size();i++){
+            
+            if(i-1>=index &&nums[i]==nums[i-1]){
+                continue;
+            }
+
+           current.push_back(nums[i]);
+            rec(nums,i+1,current,ans);
+            current.pop_back();
+
+         }
+
+    }
+
  
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         
-     vector<int>current;
-     set<vector<int>>set;
-     vector<vector<int>>ans;   
-     rec(nums,0,current,ans,set);
-      return ans;
-
-
+        vector<vector<int>>ans;
+        vector<int>current;
+        sort(nums.begin(),nums.end());
+            
+       rec(nums,0,current,ans);       
+         return ans;
     }
 };
