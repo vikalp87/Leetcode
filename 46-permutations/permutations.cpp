@@ -1,13 +1,16 @@
 class Solution {
 public:
  
-void allPermutation(vector<int>&nums,int index, set<vector<int>>&s){
+void allPermutation(vector<int>&nums,int index, vector<vector<int>>&ans){
 
+       if(index==nums.size()){
+        ans.push_back(nums);
+        return;
+       }
     
      for(int i=index;i<nums.size();i++){
           swap(nums[index],nums[i]);
-         s.insert(nums);
-         allPermutation(nums,index+1,s);
+          allPermutation(nums,index+1,ans);
          swap(nums[index],nums[i]);
      }   
 
@@ -19,11 +22,7 @@ void allPermutation(vector<int>&nums,int index, set<vector<int>>&s){
         
         vector<vector<int>>ans;
       set<vector<int>>s;
-     allPermutation(nums,0,s);
-
-for(auto i:s){
-    ans.push_back(i);
-}
+     allPermutation(nums,0,ans);
 
 
       return ans;
